@@ -1,3 +1,11 @@
+/*
+  @Author: tcly861204
+  @Email:  356671808@qq.com
+  @Date:   2022/1/7 下午4:20:49
+  @Last Modified by:   tcly861204
+  @Last Modified time: 2022/1/7 下午4:20:49
+  @Github: https://tcly861204.github.io
+*/
 export const store = {
   index: 0,
   len: 0,

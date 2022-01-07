@@ -1,3 +1,11 @@
+/*
+  @Author: tcly861204
+  @Email:  356671808@qq.com
+  @Date:   2021/11/7 下午2:53:47
+  @Last Modified by:   tcly861204
+  @Last Modified time: 2021/11/14 上午11:58:32
+  @Github: https://tcly861204.github.io
+*/
 import icon from '@/icon.png'
 export default function () {
   return `

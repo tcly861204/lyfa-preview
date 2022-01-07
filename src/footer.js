@@ -1,3 +1,11 @@
+/*
+  @Author: tcly861204
+  @Email:  356671808@qq.com
+  @Date:   2021/11/7 上午11:26:12
+  @Last Modified by:   tcly861204
+  @Last Modified time: 2021/11/15 上午9:12:20
+  @Github: https://tcly861204.github.io
+*/
 import icon from '@/icon.png'
 export default function () {
   return `<footer class="preview-container__footer">

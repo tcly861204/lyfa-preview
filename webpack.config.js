@@ -1,7 +1,9 @@
 const path = require('path')
 module.exports = {
   mode: "production",
-  entry: './src/main.js',
+  entry: {
+    preview: './src/main.js'
+  },
   output: {
     filename: '[name].min.js',
     library: 'Preview',

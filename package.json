@@ -2,7 +2,7 @@
   "name": "lyfa-preview",
   "version": "1.0.0",
   "description": "纯js实现可局部放大图片预览组件",
-  "main": "dist/main.min.js",
+  "main": "dist/preview.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",

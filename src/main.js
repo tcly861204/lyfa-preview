@@ -1,3 +1,11 @@
+/*
+  @Author: tcly861204
+  @Email:  356671808@qq.com
+  @Date:   2022/1/7 下午4:58:09
+  @Last Modified by:   tcly861204
+  @Last Modified time: 2022/1/7 下午5:01:11
+  @Github: https://tcly861204.github.io
+*/
 import { render, renderIcon, handleClose, showBtn, renderSmall } from './event'
 import { store, mutations } from './store'
 import { on } from './utils'
