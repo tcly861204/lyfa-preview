@@ -6,7 +6,7 @@
   @Last Modified time: 2022/1/7 下午4:20:49
   @Github: https://tcly861204.github.io
 */
-import { store, mutations } from './store'
+import { store, Mutations } from './store'
 import { on, off } from './utils'
 export const render = function () {
   const div = document.createElement('div')
@@ -24,32 +24,32 @@ export const render = function () {
 }
 
 export const showBtn = function () {
-  const pre = mutations.findNode('.prev')
-  const next = mutations.findNode('.next')
+  const pre = Mutations.findNode('.prev')
+  const next = Mutations.findNode('.next')
   pre.style.display = store.len > 1 ? 'block' : 'none'
   next.style.display = store.len > 1 ? 'block' : 'none'
-  on(pre, 'click', mutations.handlePrev)
-  on(next, 'click', mutations.handleNext)
+  on(pre, 'click', Mutations.handlePrev)
+  on(next, 'click', Mutations.handleNext)
 }
 
 export const handleClose = function () {
-  const closeNode = mutations.findNode('div.close')
+  const closeNode = Mutations.findNode('div.close')
   on(closeNode, 'click', () => {
     try {
-      off(window, 'keydown', mutations.handleKeyEvents)
+      off(window, 'keydown', Mutations.handleKeyEvents)
       store.dom.parentNode.removeChild(store.dom)
     } catch (_) {
     }
   })
 }
 
-export const renderIcon = function () {
-  const fullsceen = mutations.findNode('.action-item.fullsceen')
-  const zoomIn = mutations.findNode('.action-item.zoomIn')
-  const zoomOut = mutations.findNode('.action-item.zoomOut')
-  const rotate = mutations.findNode('.action-item.rotate')
-  on(fullsceen, 'click', mutations.handleFullScreen)
-  on(rotate, 'click', mutations.handleRotate)
-  on(zoomIn, 'click', () => mutations.handlerZoom('in'))
-  on(zoomOut, 'click', () => mutations.handlerZoom('out'))
+export const handleIcon = function () {
+  const fullsceen = Mutations.findNode('.action-item.fullsceen')
+  const zoomIn = Mutations.findNode('.action-item.zoomIn')
+  const zoomOut = Mutations.findNode('.action-item.zoomOut')
+  const rotate = Mutations.findNode('.action-item.rotate')
+  on(fullsceen, 'click', Mutations.handleFullScreen)
+  on(rotate, 'click', Mutations.handleRotate)
+  on(zoomIn, 'click', () => Mutations.handlerZoom('in'))
+  on(zoomOut, 'click', () => Mutations.handlerZoom('out'))
 }

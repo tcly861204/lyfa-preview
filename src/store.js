@@ -25,7 +25,7 @@ export const store = {
   }
 }
 
-export class mutations {
+export class Mutations {
   static findNode (cls) {
     return store.dom.querySelector(cls)
   }
@@ -41,18 +41,18 @@ export class mutations {
 
   static handleKeyEvents (e) {
     try {
-      switch (e.code) {
-        case 'Escape':
-          window.removeEventListener('keydown', mutations.handleKeyEvents, false)
+      switch (e.code.toLocaleLowerCase()) {
+        case 'escape':
+          window.removeEventListener('keydown', Mutations.handleKeyEvents, false)
           store.dom.parentNode.removeChild(store.dom)
           break
-        case 'KeyA':
-        case 'ArrowLeft':
-          mutations.handlePrev()
+        case 'keya':
+        case 'arrowleft':
+          Mutations.handlePrev()
           break
-        case 'KeyD':
-        case 'ArrowRight':
-          mutations.handlePrev()
+        case 'keyd':
+        case 'arrowright':
+          Mutations.handlePrev()
           break
       }
     } catch (_) {
@@ -60,20 +60,20 @@ export class mutations {
   }
 
   static updateScreen () {
-    const img = mutations.findNode('.swipper img')
-    const fullsceen = mutations.findNode('.action-item.fullsceen .icon')
+    const img = Mutations.findNode('.swipper img')
+    const fullsceen = Mutations.findNode('.action-item.fullsceen .icon')
     store.fullScreen = (parseInt(img.style.width) >= window.innerWidth) || (parseInt(img.style.height) >= window.innerHeight)
     fullsceen.style.backgroundPosition = `${store.fullScreen ? '-28px -27px' : '-28px 0'}`
   }
 
   static updateNum () {
-    const app = mutations.findNode('.action-item.app')
+    const app = Mutations.findNode('.action-item.app')
     app.setAttribute('data-num', `${store.index + 1}/${store.len}`)
   }
 
   static handleFullScreen () {
-    const fullsceen = mutations.findNode('.action-item.fullsceen .icon')
-    const img = mutations.findNode('.swipper img')
+    const fullsceen = Mutations.findNode('.action-item.fullsceen .icon')
+    const img = Mutations.findNode('.swipper img')
     let hBit = 1
     let wBit = 1
     if (store.fullScreen) {
@@ -99,7 +99,7 @@ export class mutations {
   }
 
   static handlerZoom (type) {
-    const img = mutations.findNode('.swipper img')
+    const img = Mutations.findNode('.swipper img')
     if (type === 'in') {
       if (store.scaleNum + 0.2 < 3) {
         store.scaleNum += 0.2
@@ -122,17 +122,17 @@ export class mutations {
     img.style.height = `${scaleHeight}px`
     img.style.top = `${store.imgTop}px`
     img.style.left = `${store.imgLeft}px`
-    mutations.updateScreen()
+    Mutations.updateScreen()
   }
 
   static handleRotate () {
-    const img = mutations.findNode('.swipper img')
+    const img = Mutations.findNode('.swipper img')
     store.rotateNum -= 90
     img.style.transform = `rotate(${store.rotateNum}deg)`
   }
 
   static handleApp () {
-    const footNode = mutations.findNode('.preview-container__footer')
+    const footNode = Mutations.findNode('.preview-container__footer')
     const transform = getComputedStyle(footNode, null).getPropertyValue('transform')
     footNode.style.transform = transform === 'matrix(1, 0, 0, 1, 0, 80)' ? 'matrix(1, 0, 0, 1, 0, 0)' : 'matrix(1, 0, 0, 1, 0, 80)'
   }
