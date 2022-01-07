@@ -93,7 +93,7 @@ export default class Preview {
                 }
               }, false)
 
-              img.addEventListener('mousewheel', function (e) {
+              on(img, 'mousewheel', function (e) {
                 e.preventDefault()
                 const [tempScaleNum, scaleX, scaleY] = [store.scaleNum, e.clientX - store.imgLeft, e.clientY - store.imgTop]
                 this.style.transition = 'none'
@@ -115,12 +115,13 @@ export default class Preview {
                 this.style.top = `${store.imgTop}px`
                 this.style.width = `${imgWidth * store.scaleNum}px`
                 this.style.height = `${imgHeight * store.scaleNum}px`
-              }, false)
-              img.addEventListener('mouseout', function (e) {
+              })
+
+              on(img, 'mouseout', function (e) {
                 if (this.style.transition.indexOf('none') > -1) {
                   this.style.transition = 'all ease-in-out .4s'
                 }
-              }, false)
+              })
               const timer = setTimeout(() => {
                 clearTimeout(timer)
                 div.querySelector('.swipper').innerHTML = ''
@@ -139,7 +140,7 @@ export default class Preview {
   }
 }
 if (process.env.NODE_ENV !== 'production') {
-  document.querySelector('button').addEventListener('click', () => {
+  on(document.querySelector('button'), 'click', () => {
     new Preview({
       list: [{
         ext: 'jpeg',
@@ -151,5 +152,5 @@ if (process.env.NODE_ENV !== 'production') {
         src: '/fengjin.jpeg'
       }]
     }).display(0)
-  }, false)
+  })
 }
