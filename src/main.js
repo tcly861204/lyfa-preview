@@ -1,5 +1,6 @@
 import { render, renderIcon, handleClose, showBtn, renderSmall } from './event'
-import { on, store, mutations } from './store'
+import { store, mutations } from './store'
+import { on } from './utils'
 import './style.scss'
 export default class Preview {
   constructor (options) {

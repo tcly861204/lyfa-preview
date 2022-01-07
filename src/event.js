@@ -1,4 +1,5 @@
-import { on, off, store, mutations } from './store'
+import { store, mutations } from './store'
+import { on, off } from './utils'
 export const render = function () {
   const div = document.createElement('div')
   div.className = 'preview-container__mask'
