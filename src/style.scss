@@ -1,0 +1,212 @@
+.preview-container__mask {
+  position: fixed;
+  background: rgba(0, 0, 0, .85);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: flex;
+}
+
+.preview-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-repeat: no-repeat;
+    &.close {
+      background-position: -110px 0;
+    }
+  }
+  .close {
+    width: 24px;
+    height: 24px;
+    margin: 13px 15px 13px 0;
+    cursor: pointer;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .download {
+    width: 24px;
+    height: 24px;
+    margin: 13px 15px 13px 0;
+    cursor: pointer;
+  }
+  @-webkit-keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  &__header {
+    background: #000;
+    height: 50px;
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-left: 15px;
+    .title {
+      padding: 0;
+      margin: 0;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: normal;
+      color: #bdbdbd;
+      flex: 1;
+    }
+  }
+  &__body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &-btn {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      border-radius: 30px;
+      position: absolute;
+      background: rgba(117, 117, 117, .2);
+      color: #bdbdbd;
+      border: none;
+      cursor: pointer;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 99;
+      display: none;
+      padding: 18px;
+      box-sizing: border-box;
+      &:hover {
+        background: rgba(117, 117, 117, .4);
+        color: #fff;
+      }
+    }
+    .prev {
+      left: 30px;
+      .icon {
+        background-position: -83px -27px;
+      }
+    }
+    .next {
+      right:30px;
+      .icon {
+        background-position: -83px 0;
+      }
+    }
+    .swipper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .loading {
+        width: 36px;
+        height: 36px;
+        border: 6px solid transparent;
+        border-top-color: #fff;
+        border-radius: 50%;
+        -webkit-animation: 1s loading linear infinite;
+        animation: 1s loading linear infinite;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        &::before {
+          content: '';
+          display: block;
+          width: inherit;
+          height: inherit;
+          position: absolute;
+          top: -6px;
+          left: -6px;
+          border: 6px solid currentColor;
+          border-radius: 50%;
+          opacity: .6;
+        }
+      }
+    }
+  }
+  &__footer {
+    position: absolute;
+    height: 50px;
+    transition: transform ease-in-out .3s;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .6);
+    &-action {
+      height: 50px;
+      ul {
+        display: flex;
+        width: 360px;
+        height: 30px;
+        padding: 10px 0;
+        justify-content: space-around;
+        margin: 0 auto;
+      }
+      .action-item {
+        width: 30px;
+        height: 30px;
+        padding: 3px;
+        box-sizing: border-box;
+        list-style-type: none;
+        cursor: pointer;
+        &.app{
+          position: relative;
+          left: -20px;
+          &.icon{
+            background-position: 0 0;
+          }
+          &::after{
+            position: absolute;
+            content: attr(data-num);
+            right: -18px;
+            top: 0;
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+            color: #bdbdbd;
+          }
+        }
+        &.fullsceen>.icon{
+          background-position: -28px 0;
+        }
+        &.zoomIn>.icon{
+          background-position: -56px 0;
+        }
+        &.zoomOut>.icon{
+          background-position: -56px -27px;
+        }
+        &.rotate>.icon{
+          background-position: 0 -27px;
+        }
+      }
+    }
+  }
+}
+
