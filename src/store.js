@@ -6,6 +6,7 @@
   @Last Modified time: 2022/1/7 下午4:20:49
   @Github: https://tcly861204.github.io
 */
+// @ts-nocheck
 export const store = {
   index: 0,
   len: 0,
