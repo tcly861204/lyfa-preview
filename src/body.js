@@ -6,6 +6,7 @@
   @Last Modified time: 2021/11/14 上午11:58:32
   @Github: https://tcly861204.github.io
 */
+// @ts-nocheck
 import icon from '@/icon.png'
 export default function () {
   return `

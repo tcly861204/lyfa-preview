@@ -53,7 +53,7 @@ export class Mutations {
           break
         case 'keyd':
         case 'arrowright':
-          Mutations.handlePrev()
+          Mutations.handleNext()
           break
       }
     } catch (_) {

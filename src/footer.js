@@ -6,6 +6,7 @@
   @Last Modified time: 2021/11/15 上午9:12:20
   @Github: https://tcly861204.github.io
 */
+// @ts-nocheck
 import icon from '@/icon.png'
 export default function () {
   return `<footer class="preview-container__footer">

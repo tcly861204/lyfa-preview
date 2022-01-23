@@ -3,10 +3,11 @@ type Item = {
   name: string,
   src: string
 }
+
 type Options = {
   list: Array<Item>
 }
 declare class Preview {
   constructor(options: Options)
-  public display(index: number):void
+  public display(index: number): void
 }
