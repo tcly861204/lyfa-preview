@@ -1,3 +1,11 @@
+/*
+  @Author: tcly861204
+  @Email:  356671808@qq.com
+  @Date:   2022/1/23 下午3:22:49
+  @Last Modified by:   tcly861204
+  @Last Modified time: 2022/1/23 下午2:17:00
+  @Github: https://tcly861204.github.io
+*/
 import { store } from '@/store'
 import '@/style/global.scss'
 import Layout from '@/render/layout'
