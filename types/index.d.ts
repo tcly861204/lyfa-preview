@@ -3,7 +3,6 @@ type Item = {
   name: string,
   src: string
 }
-
 type Options = {
   list: Array<Item>
 }

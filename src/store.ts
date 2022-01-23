@@ -1,18 +1,35 @@
-/*
-  @Author: tcly861204
-  @Email:  356671808@qq.com
-  @Date:   2022/1/7 下午4:20:49
-  @Last Modified by:   tcly861204
-  @Last Modified time: 2022/1/7 下午4:20:49
-  @Github: https://tcly861204.github.io
-*/
-// @ts-nocheck
-export const store = {
+import Preview from "./main"
+import { findNode } from '@/libs/utils'
+export type Item = {
+  ext: string,
+  name: string,
+  src: string
+}
+interface Store {
+  app: Preview | null,
+  index: number,
+  len: number,
+  list: Array<Item>,
+  dom: HTMLDivElement | null,
+  imgWidth: number | null,
+  imgHeight: number | null,
+  rotateNum: number,
+  scaleNum: number,
+  imgLeft: number,
+  imgTop: number,
+  fullScreen: Boolean,
+  btns: {
+    prev: null,
+    next: null
+  }
+}
+
+export const store: Store = {
+  app: null,
   index: 0,
   len: 0,
   list: [],
   dom: null,
-  app: null,
   imgWidth: null,
   imgHeight: null,
   rotateNum: 0,
@@ -27,20 +44,7 @@ export const store = {
 }
 
 export class Mutations {
-  static findNode (cls) {
-    return store.dom.querySelector(cls)
-  }
-
-  static handlePrev () {
-    store.app.display(store.index === 0 ? store.len - 1 : store.index - 1)
-  }
-
-  static handleNext () {
-    store.app.display(store.index === store.len - 1 ? 0 : store.index + 1)
-    
-  }
-
-  static handleKeyEvents (e) {
+  static handleKeyEvents (e: KeyboardEvent): void {
     try {
       switch (e.code.toLocaleLowerCase()) {
         case 'escape':
@@ -61,20 +65,25 @@ export class Mutations {
   }
 
   static updateScreen () {
-    const img = Mutations.findNode('.swipper img')
-    const fullsceen = Mutations.findNode('.action-item.fullsceen .icon')
+    const img = findNode('.swipper img')
+    const fullsceen = findNode('.action-item.fullsceen .icon')
     store.fullScreen = (parseInt(img.style.width) >= window.innerWidth) || (parseInt(img.style.height) >= window.innerHeight)
     fullsceen.style.backgroundPosition = `${store.fullScreen ? '-28px -27px' : '-28px 0'}`
   }
 
-  static updateNum () {
-    const app = Mutations.findNode('.action-item.app')
-    app.setAttribute('data-num', `${store.index + 1}/${store.len}`)
+  static handlePrev () {
+    const index = store.index === 0 ? store.len - 1 : store.index - 1
+    store.app.display(index)
+  }
+
+  static handleNext () {
+    const index = store.index === store.len - 1 ? 0 : store.index + 1
+    store.app.display(index)
   }
 
   static handleFullScreen () {
-    const fullsceen = Mutations.findNode('.action-item.fullsceen .icon')
-    const img = Mutations.findNode('.swipper img')
+    const fullsceen = findNode('.action-item.fullsceen .icon')
+    const img = findNode('.swipper img')
     let hBit = 1
     let wBit = 1
     if (store.fullScreen) {
@@ -99,8 +108,14 @@ export class Mutations {
     fullsceen.style.backgroundPosition = `${store.fullScreen ? '-28px -27px' : '-28px 0'}`
   }
 
-  static handlerZoom (type) {
-    const img = Mutations.findNode('.swipper img')
+  static handleRotate () {
+    const img = findNode('.swipper img')
+    store.rotateNum -= 90
+    img.style.transform = `rotate(${store.rotateNum}deg)`
+  }
+
+  static handlerZoom (type: string) {
+    const img = findNode('.swipper img')
     if (type === 'in') {
       if (store.scaleNum + 0.2 < 3) {
         store.scaleNum += 0.2
@@ -123,18 +138,6 @@ export class Mutations {
     img.style.height = `${scaleHeight}px`
     img.style.top = `${store.imgTop}px`
     img.style.left = `${store.imgLeft}px`
-    Mutations.updateScreen()
-  }
-
-  static handleRotate () {
-    const img = Mutations.findNode('.swipper img')
-    store.rotateNum -= 90
-    img.style.transform = `rotate(${store.rotateNum}deg)`
-  }
-
-  static handleApp () {
-    const footNode = Mutations.findNode('.preview-container__footer')
-    const transform = getComputedStyle(footNode, null).getPropertyValue('transform')
-    footNode.style.transform = transform === 'matrix(1, 0, 0, 1, 0, 80)' ? 'matrix(1, 0, 0, 1, 0, 0)' : 'matrix(1, 0, 0, 1, 0, 80)'
+    this.updateScreen()
   }
 }

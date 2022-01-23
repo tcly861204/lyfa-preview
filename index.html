@@ -2,27 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="./dist/preview.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <meta name="theme-color" content="#000000" />
+  <title>预览图片</title>
 </head>
 <body>
-  <button>预览</button>
-  <script>
-    document.querySelector('button').addEventListener('click', () => {
-      new Preview({
-        list: [{
-          ext: 'jpeg',
-          name: '预览图片',
-          src: './public/meinv.jpeg'
-        }, {
-          ext: 'jpeg',
-          name: '预览图片',
-          src: './public/fengjin.jpeg'
-        }]
-      }).display(0)
-    }, false)
-  </script>
+  <button id="preview">预览</button>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

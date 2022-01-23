@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "strict": false,
+    "noImplicitAny": false,
+    "strictFunctionTypes": false,
+    "noImplicitThis": false,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "lib": ["es6", "dom"],
+    "baseUrl": ".",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"]
+}
