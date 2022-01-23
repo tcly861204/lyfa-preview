@@ -17,6 +17,13 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+      }
+    }
+  },
   plugins: [
     typescript()
   ],

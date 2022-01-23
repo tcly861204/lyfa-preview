@@ -17,8 +17,12 @@ type Item = {
   src: string
 }
 
+type CallBack = () => void
+
 type Option = {
-  list: Array<Item>
+  list: Array<Item>,
+  // 扩展还未实现
+  extend?: (type: string, callback: CallBack) => void
 }
 
 class Preview extends Core {
