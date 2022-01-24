@@ -79,14 +79,36 @@ export class Mutations {
     fullsceen.style.backgroundPosition = `${store.fullScreen ? '-28px -27px' : '-28px 0'}`
   }
 
+  static animation = false
+
   static handlePrev () {
-    const index = store.index === 0 ? store.len - 1 : store.index - 1
-    store.app.display(index)
+    if (this.animation) {
+      return
+    }
+    this.animation = true
+    const img = findNode('.swipper img')
+    img.setAttribute('class', 'animated fadeOutRight')
+    const timer = setTimeout(() => {
+      clearTimeout(timer)
+      this.animation = false
+      const index = store.index === 0 ? store.len - 1 : store.index - 1
+      store.app.display(index)
+    }, 500)
   }
 
   static handleNext () {
-    const index = store.index === store.len - 1 ? 0 : store.index + 1
-    store.app.display(index)
+    if (this.animation) {
+      return
+    }
+    this.animation = true
+    const img = findNode('.swipper img')
+    img.setAttribute('class', 'animated fadeOutLeft')
+    const timer = setTimeout(() => {
+      clearTimeout(timer)
+      this.animation = false
+      const index = store.index === store.len - 1 ? 0 : store.index + 1
+      store.app.display(index)
+    }, 500)
   }
 
   static handleFullScreen () {

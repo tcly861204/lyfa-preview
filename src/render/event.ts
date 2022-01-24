@@ -12,8 +12,13 @@ export const bindCloseEvent = function () {
   const closeNode = findNode('div.close')
   on(closeNode, 'click', () => {
     try {
-      off(window, 'keydown', Mutations.handleKeyEvents)
-      store.dom.parentNode.removeChild(store.dom)
+      const imgNode = findNode('.swipper img')
+      imgNode.setAttribute('class', 'animated bounceOut')
+      const timer = setTimeout(() => {
+        clearTimeout(timer)
+        off(window, 'keydown', Mutations.handleKeyEvents)
+        store.dom.parentNode.removeChild(store.dom)
+      }, 900)
     } catch (_) {
     }
   })
