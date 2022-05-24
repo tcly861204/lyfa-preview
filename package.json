@@ -1,6 +1,6 @@
 {
   "name": "lyfa-preview",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "typescript实现可局部放大图片预览组件",
   "main": "dist/main.min.js",
   "types": "types/index.d.ts",
