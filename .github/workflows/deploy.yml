@@ -9,12 +9,12 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js v16.x
-        uses: actions/setup-node@v3
+      - name: Setup Node.js v22.x
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22.x'
 
       - name: Install
         run: npm install # 安装依赖
@@ -23,9 +23,9 @@ jobs:
         run: npm run build # 打包
           
       - name: 'change npm source'
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22.x'
           registry-url: https://registry.npmjs.org/
         
       - name: publish
