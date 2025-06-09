@@ -1,8 +1,9 @@
 {
   "name": "lyfa-preview",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "typescript实现可局部放大图片预览组件",
-  "main": "dist/main.min.js",
+  "main": "dist/main.umd.js",
+  "module": "dist/main.es.js",
   "types": "types/index.d.ts",
   "scripts": {
     "dev": "vite --mode development",

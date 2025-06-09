@@ -31,8 +31,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'Preview',
-      formats: ['umd'],
-      fileName: () => 'main.min.js',
+      formats: ['umd', 'es'],
+      fileName: (format) => `main.${format}.js`,
     },
     rollupOptions: {
       output: {
