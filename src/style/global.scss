@@ -305,7 +305,7 @@
           &::after{
             position: absolute;
             content: attr(data-num);
-            right: -18px;
+            left: 30px;
             top: 0;
             height: 30px;
             line-height: 30px;

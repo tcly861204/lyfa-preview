@@ -67,7 +67,7 @@ export default class Core {
       top: ${store.imgTop}px;
       left: ${store.imgLeft}px;
       cursor: pointer;
-      transition: all ease-in-out .4s;
+      transition: all ease-in-out .2s;
     `)
 
     img.addEventListener('mousedown', function (e) {
@@ -90,7 +90,7 @@ export default class Core {
         document.onmousemove = null
         document.onmouseup = null
         this.style.cursor = 'pointer'
-        this.style.transition = 'all ease-in-out .4s'
+        this.style.transition = 'all ease-in-out .2s'
       }
     }, false)
 
